@@ -1,6 +1,6 @@
 # **Alice's ring - Local Ring-Signature Environment**
 
-This exe developed in python during the **ETHDenver 2023 hackathon** is the local environnement to create ring signature for Alice's Ring. 
+This binary developed in python during the **ETHDenver 2023 hackathon** is the local environnement to create ring signature for Alice's Ring. 
 After having obtained the necessary data for the signature on our front end, you can then create your ring-signature locally and have it verified on chain. 
 
 ## **What are ring-signature** 💍
