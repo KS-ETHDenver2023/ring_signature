@@ -3,7 +3,7 @@
 This exe build in python during the **ETHDenver 2023 hackathon** is the local environnement to create ring signature for Alice's Ring. 
 After having obtained the necessary data for the signature on our front end, you can then create your ring-signature locally and have it verified on chain. 
 
-##**What are ring-signature**##💍
+## **What are ring-signature** ##💍
 Ring signatures are a type of digital signature that allows a user to sign a message on behalf of a group without revealing which specific member signed it. The signature is created using a group of possible signers, or a "ring," and any one of the members in the ring can create the signature without revealing their identity. This makes it a useful tool for maintaining privacy in various applications, such as cryptocurrencies, whistleblowing, and anonymous messaging.
 In Alice's Ring we use ring signature to give you access to proof of solvency while maintaining your privacy.
 
