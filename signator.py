@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QHBoxLayout, QVBoxLayout, QGridLayout, QMessageBox, QScrollArea
-from hackyaosring import haosring_sign, convert_hex_to_int_pairs
+from hackyaosring import haosring_sign, convert_hex_to_int_pairs,hex_string_to_int_tuple
 import pyperclip
 
 class Alice_ring(QWidget):
@@ -64,7 +64,11 @@ class Alice_ring(QWidget):
         grid.addWidget(QLabel('Sig:'), 7, 0)
         grid.addWidget(self.resultLabel3, 7, 1)
         grid.addWidget(self.copyButton3, 7, 2)
-        
+        # grid.addWidget(QLabel(''), 7, 0) # dummy widget to fill up the space
+        # grid.addWidget(scrollArea, 8, 1)
+        # grid.addWidget(QLabel(''), 9, 0) # dummy widget to fill up the space
+        # grid.addWidget(QLabel(''), 10, 0) # dummy widget to fill up the space
+
         # set the layout
         self.setLayout(grid)
 
@@ -81,11 +85,14 @@ class Alice_ring(QWidget):
         msg = self.msg.text()
         pkey = self.pukeys.text()
         yourkey = self.pair.text()
-        yourpair = str([(yourkey),int("0x"+privakey,16)]).replace("'", "")
+        yourkeyInt = hex_string_to_int_tuple(yourkey)
+        yourpair = [(yourkeyInt),int(privakey,16)]
+        pkeyInt = convert_hex_to_int_pairs(pkey)
         
 
         # call the function and get the result
-        result = haosring_sign(pkeys= convert_hex_to_int_pairs(pkey),mypair= yourpair,message= int(msg,16))
+        #result = haosring_sign(pkeys= (convert_hex_to_int_pairs(pkey)),mypair= yourpair,message= int(msg,16))
+        result = haosring_sign(pkeys= pkeyInt,mypair= yourpair,message= int(msg,16))
         result1 = str(result[0])
         result2 = str(result[1])
         result3 = str(result[2])
@@ -131,4 +138,3 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Alice_ring()
     sys.exit(app.exec_())
-
