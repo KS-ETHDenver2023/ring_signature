@@ -36,8 +36,4 @@ def hackymul_raw(x, y, scalar, m=0):
 
 
 def hackymul(x, y, scalar, m=0):
-	# print(colored(x,'yellow'))
-	# print(colored(y,'yellow'))
-	# print(colored(scalar,'green'))
-	# print(colored(pubkey_to_ethaddr(hackymul_raw(x, y, scalar, m)),"blue"))
 	return pubkey_to_ethaddr(hackymul_raw(x, y, scalar, m))

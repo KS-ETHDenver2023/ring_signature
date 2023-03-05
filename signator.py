@@ -64,11 +64,7 @@ class Alice_ring(QWidget):
         grid.addWidget(QLabel('Sig:'), 7, 0)
         grid.addWidget(self.resultLabel3, 7, 1)
         grid.addWidget(self.copyButton3, 7, 2)
-        # grid.addWidget(QLabel(''), 7, 0) # dummy widget to fill up the space
-        # grid.addWidget(scrollArea, 8, 1)
-        # grid.addWidget(QLabel(''), 9, 0) # dummy widget to fill up the space
-        # grid.addWidget(QLabel(''), 10, 0) # dummy widget to fill up the space
-
+        
         # set the layout
         self.setLayout(grid)
 
