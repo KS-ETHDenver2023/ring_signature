@@ -9,7 +9,7 @@ In Alice's Ring we use ring signature to give you access to proof of solvency wh
 
 ## **Configuration** 📝
 
-1. Go on our website().
+1. Go on our [website](https://web-app-xi-rose.vercel.app).
 2. On the generate Proof page click on download.
 3. Open signator.exe and pass the arguments for your signature.
 4. Copy paste the returned value to our website to verify your proof and mint your SBT.
@@ -21,8 +21,8 @@ In Alice's Ring we use ring signature to give you access to proof of solvency wh
 **Proof of Solvancy :**  
 Mainnet (in development) : 
 * [Polygon ](https://www.polygon.technology/)
-* [Scroll ](https://scroll.io/)
-* [zkSync ](https://zksync.io/)
+
+
 
 Testnet (live) : 
 * Polygon mumbai
