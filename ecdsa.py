@@ -2,7 +2,7 @@ from __future__ import print_function
 
 from binascii import hexlify
 
-import bitcoin as b
+from bitcoin import encode_pubkey
 from sha3 import keccak_256
 
 from utils import tobe256, bytes_to_int, randb256
@@ -38,36 +38,36 @@ def unpack_signature(r, sv):
 def pubkey_to_ethaddr(pubkey):
 	if isinstance(pubkey, tuple):
 		assert len(pubkey) == 2
-		pubkey = b.encode_pubkey(pubkey, 'bin')
+		pubkey = encode_pubkey(pubkey, 'bin')
 	return hexlify(keccak_256(pubkey[1:]).digest()[12:])
 
 
-def sign(messageHash, seckey):
-	return pack_signature(*b.ecdsa_raw_sign(messageHash, seckey))
+# def sign(messageHash, seckey):
+# 	return pack_signature(*b.ecdsa_raw_sign(messageHash, seckey))
 
 
-def recover(messageHash, r, sv):
-	 return pubkey_to_ethaddr(b.ecdsa_raw_recover(messageHash, unpack_signature(r, sv)))
+# def recover(messageHash, r, sv):
+# 	 return pubkey_to_ethaddr(b.ecdsa_raw_recover(messageHash, unpack_signature(r, sv)))
 
 
-if __name__ == "__main__":
-	# Verifies that a random sample of freshly generated keys don't
-	# end up setting the 'flag' bit which replaces 'v'
-	# If this test ever fails, the entire premise of this thing is fucked!
-	while True:
-		print("Generating key")
-		messageHash = randb256()
-		seckey = randb256()
-		pubkey = pubkey_to_ethaddr(b.privtopub(seckey))
+# if __name__ == "__main__":
+# 	# Verifies that a random sample of freshly generated keys don't
+# 	# end up setting the 'flag' bit which replaces 'v'
+# 	# If this test ever fails, the entire premise of this thing is fucked!
+# 	while True:
+# 		print("Generating key")
+# 		messageHash = randb256()
+# 		seckey = randb256()
+# 		pubkey = pubkey_to_ethaddr(b.privtopub(seckey))
 
-		print("Signing")
-		sig_t = b.ecdsa_raw_sign(messageHash, seckey)
-		sig = sign(messageHash, seckey)
-		assert unpack_signature(*sig) == sig_t
+# 		print("Signing")
+# 		sig_t = b.ecdsa_raw_sign(messageHash, seckey)
+# 		sig = sign(messageHash, seckey)
+# 		assert unpack_signature(*sig) == sig_t
 
-		print("Recovering")
-		pubkey_v = recover(messageHash, *sig)
-		print("Pubkey:", pubkey_v, pubkey)
-		print("Message:", messageHash.encode('hex'))
-		print("Sig:", sig[0].encode('hex'), sig[1].encode('hex'))
-		assert pubkey == pubkey_v
+# 		print("Recovering")
+# 		pubkey_v = recover(messageHash, *sig)
+# 		print("Pubkey:", pubkey_v, pubkey)
+# 		print("Message:", messageHash.encode('hex'))
+# 		print("Sig:", sig[0].encode('hex'), sig[1].encode('hex'))
+# 		assert pubkey == pubkey_v
