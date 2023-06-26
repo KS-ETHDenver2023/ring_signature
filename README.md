@@ -26,7 +26,7 @@ Mainnet (in development) :
 
 Testnet (live) : 
 * Polygon mumbai
-* Scroll L1 testnet
+* Scroll testnet
 * zkSync testnet
 * Goerli
 
